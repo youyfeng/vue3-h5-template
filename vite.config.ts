@@ -4,8 +4,6 @@ import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import Components from "unplugin-vue-components/vite";
 import { VantResolver } from "unplugin-vue-components/resolvers";
-import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
-import path from "path";
 import mockDevServerPlugin from "vite-plugin-mock-dev-server";
 import vueSetupExtend from "vite-plugin-vue-setup-extend";
 import viteCompression from "vite-plugin-compression";
@@ -29,13 +27,6 @@ export default defineConfig(({ mode }) => {
       Components({
         dts: "src/typings/components.d.ts",
         resolvers: [VantResolver()]
-      }),
-      // svg icon
-      createSvgIconsPlugin({
-        // 指定图标文件夹
-        iconDirs: [path.resolve(root, "src/icons/svg")],
-        // 指定 symbolId 格式
-        symbolId: "icon-[dir]-[name]"
       }),
       // 允许 setup 语法糖上添加组件名属性
       vueSetupExtend(),

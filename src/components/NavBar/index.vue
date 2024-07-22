@@ -1,17 +1,17 @@
-<script setup lang="ts">
-import { useDarkMode, useToggleDarkMode } from "@/hooks/useToggleDarkMode";
-
-const onClickRight = () => {
-  useToggleDarkMode();
-};
-</script>
-
 <template>
-  <van-nav-bar fixed placeholder @click-right="onClickRight">
-    <template #right>
-      <svg-icon class="text-[18px]" :name="useDarkMode() ? 'light' : 'dark'" />
+  <van-nav-bar fixed placeholder>
+    <template #title>
+      <div>{{ title }}</div>
     </template>
   </van-nav-bar>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue";
+import { useRoute, RouteLocationNormalized } from "vue-router";
+
+const route: RouteLocationNormalized = useRoute();
+const title = ref<string>(route?.meta?.title as string);
+</script>
 
 <style scoped></style>

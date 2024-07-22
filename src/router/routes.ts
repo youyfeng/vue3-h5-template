@@ -1,39 +1,22 @@
 import Layout from "@/layout/index.vue";
 import type { RouteRecordRaw } from "vue-router";
-import Demo from "@/views/demo/index.vue";
+import Cashier from '@/views/cashier/index.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
     name: "root",
     component: Layout,
-    redirect: { name: "Demo" },
+    redirect: { name: "Cashier" },
     children: [
       {
-        path: "demo",
-        name: "Demo",
-        component: Demo,
+        path: "cashier",
+        name: "Cashier",
+        component: Cashier,
         meta: {
-          title: "主页"
+          title: "收银台"
         }
       },
-      {
-        path: "tools",
-        name: "Tools",
-        component: () => import("@/views/tools/index.vue"),
-        meta: {
-          title: "工具"
-        }
-      },
-      {
-        path: "about",
-        name: "About",
-        component: () => import("@/views/about/index.vue"),
-        meta: {
-          title: "关于",
-          noCache: true
-        }
-      }
     ]
   }
 ];
